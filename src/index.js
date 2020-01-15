@@ -1,18 +1,23 @@
-import React, { Component } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
+import useSocket from "./useSocket";
 
-class SocketContainer extends Component {
-  constructor() {
-    super();
-    this.state = {
-      title: ""
-    };
-  }
-  render() {
-    return (
-      <div>hello</div>
-    );
-  }
+const SocketContainer = ({}) => {
+  const url = `ws://localhost:1337`;
+
+  const onOpen = socket => {
+    socket.send('hello');
+  };
+
+  const onMsg = (socket, msg) => {
+    console.log('message received');
+  };
+
+  useSocket({ url, onOpen, onMsg });
+
+  return (
+    <h1>React Socket</h1>
+  );
 }
 export default SocketContainer;
 

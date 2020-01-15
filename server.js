@@ -1,13 +1,14 @@
 
-// ws allows us to use server side websockets (aka in node)
+// ws allows us to use server-side websockets (aka in node)
 const WebSocket = require('ws');
 
-const wss = new WebSocket.Server({ port: 1337 });
+const server = new WebSocket.Server({ port: 1337 });
 
-wss.on('connection', function connection(ws) {
+server.on('connection', function connection(ws) {
   ws.on('message', function incoming(message) {
-    console.log('received: %s', message);
+    console.log('Message from FE: ', message);
   });
 
-  ws.send('something');
+  ws.send('ka');
 });
+

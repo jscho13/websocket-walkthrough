@@ -6,27 +6,34 @@
 	</head>
 
 	<body>
-		<p>Button that disconnects</p>
 		<div id="app"></div>
+
+    <input id='msg'></input>
+    <button onclick="sendMessage()">Send message</button>
 	</body>
 <html>
 
 <script>
-  // This websocket is written in plain old javascript
+  // This plain old javascript
   // Timeless, simple, no fancy stuff
-  var url = 'ws://localhost:1337'
-  var connection = new WebSocket(url)
+/*
+  var url = 'ws://localhost:1337';
+  var socket = new WebSocket(url);
 
-  function myFunction() {
+  socket.onopen = () => {
+    console.log('Websocket opened');
   }
 
-  connection.onopen = () => {
-    setInterval(function(){
-      connection.send('hey')
-    }, 1000);
+  socket.onmessage = e => {
+    console.log('Message from BE: ', e.data);
   }
 
-  connection.onmessage = e => {
-    console.log(e.data)
+  socket.onclose = () => {
+    console.log('Disconnecting websocket');
+  }
+*/
+
+  function sendMessage() {
+    socket.send(document.getElementById('msg').value);
   }
 </script>
