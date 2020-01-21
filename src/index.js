@@ -4,14 +4,8 @@ import useSocket from "./useSocket";
 
 const SocketContainer = ({}) => {
   const url = `ws://localhost:1337`;
-
-  const onOpen = socket => {
-    socket.send('hello');
-  };
-
-  const onMsg = (socket, msg) => {
-    console.log('message received');
-  };
+  const onOpen = socket => { socket.send('hello'); };
+  const onMsg = (socket, msg) => { console.log('message received'); };
 
   useSocket({ url, onOpen, onMsg });
 
